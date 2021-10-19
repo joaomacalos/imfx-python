@@ -193,3 +193,29 @@ def stochastic_forecast2(
     final_frame.columns = ['mean', 'lower', 'upper']
 
     return final_frame
+
+from numpy import log
+
+def aic_eviews(model):
+    df = model.df_model
+    llf = model.llf
+    n = model.nobs
+    return -2 * (llf/n) + 2 * (df/n)
+
+def bic_eviews(model):
+    df = model.df_model
+    llf = model.llf
+    n = model.nobs
+    return -2 * (llf/n) + df * log(n) / (n)
+
+def aic_lectures(model):
+    df = model.df_model
+    sse = model.sse
+    n = model.nobs
+    return n * log(sse) + 2 * df
+
+def bic_lectures(model):
+    df = model.df_model
+    sse = model.sse
+    n = model.nobs
+    return n * log(sse) + df * log(n)

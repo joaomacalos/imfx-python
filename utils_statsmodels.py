@@ -50,7 +50,10 @@ def bglm_test(model, lags, title='') -> Series:
         print("Fail to reject the null hypothesis at the .05 significance level")
         print("Data has no evidence of autocorrelation.")
 
-def dynamic_pred(model: RegressionResultsWrapper, exog: DataFrame, lag_endog: str) -> DataFrame:
+def dynamic_pred(
+    model: RegressionResultsWrapper, 
+    exog: DataFrame, 
+    lag_endog: str) -> DataFrame:
     """
     Takes a fitted model, a set of exogenous variables, and the name of the lagged
     endogenous variable and returns a DataFrame with the summary of the dynamic prediction.
